@@ -75,9 +75,9 @@ float rand(float2 co)
 
 float4 main(float2 fragCoord : TEXCOORD0) : COLOR0
 {
-	float4 fragColor = tex2D(texSampler, fragCoord);
+    float4 fragColor = tex2D(texSampler, fragCoord);
 
-	float2 uv = fragCoord.xy / iResolution.xy;    
+    float2 uv = fragCoord.xy / iResolution.xy;    
     float time = iTime * 2.0;
     
     // Create large, incidental noise waves
@@ -88,11 +88,11 @@ float4 main(float2 fragCoord : TEXCOORD0) : COLOR0
     
     // Apply the noise as x displacement for every line
     float xpos = uv.x - noise * noise * 0.25;
-	fragColor = tex2D(texSampler, float2(xpos, uv.y));
+    fragColor = tex2D(texSampler, float2(xpos, uv.y));
     
     // lerp in some random interference for lines
 	
-	float randtest = rand(float2(uv.y * time, uv.y * time));
+    float randtest = rand(float2(uv.y * time, uv.y * time));
 	
     fragColor.rgb = lerp(fragColor.rgb, float3(randtest, randtest, randtest), noise * 0.3).rgb;
     
@@ -106,5 +106,5 @@ float4 main(float2 fragCoord : TEXCOORD0) : COLOR0
     fragColor.g = lerp(fragColor.r, tex2D(texSampler, float2(xpos + noise * 0.05, uv.y)).g, 0.25);
     fragColor.b = lerp(fragColor.r, tex2D(texSampler, float2(xpos - noise * 0.05, uv.y)).b, 0.25);
     
-	return fragColor;
+    return fragColor;
 }
