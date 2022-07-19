@@ -31,7 +31,7 @@ bool initialize_shader()
     return true;
 }
 
-void on_lost_device
+void on_lost_device()
 {
     if (m_pGlitchShader)
     {
