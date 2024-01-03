@@ -1,4 +1,4 @@
-//ported from https://www.shadertoy.com/view/XtK3W3
+// pasted from https://www.shadertoy.com/view/XtK3W3
 
 sampler texSampler : register(s0);
 
